@@ -4,6 +4,7 @@
     Author     : allen
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,7 +26,22 @@
         </form>
         
         <form action="ShoppingListServlet" method="post">
+            <c:forEach items="${itemList}" var="item">
+                <label>
+                    <input type="radio" name="itemDelete" value="${itemList}">
+                    
+                    <br>
+                    
+                </label>
+                
+            </c:forEach>
             
+            <c:if test="${itemList.size() > 0}">
+                <input type="submit" value="delete">
+                
+                <input type="hidden" name="action" value="delete">
+                
+            </c:if>
         </form>
     </body>
 </html>
